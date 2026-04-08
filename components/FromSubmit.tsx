@@ -5,8 +5,9 @@ const FromSubmit = () => {
   const { pending } = useFormStatus();
   return (
     <>
-      <button type="reset">Reset</button>
-      <button>{pending ? "Creating ..." : "Create a post"}</button>
+      <button type="submit" className="btn btn-primary">
+        {pending ? "Creating ..." : "Create post"}
+      </button>
     </>
   );
 };

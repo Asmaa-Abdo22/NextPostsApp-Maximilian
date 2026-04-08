@@ -24,7 +24,7 @@ function Post({
   action: (postId: number) => void;
 }) {
   return (
-    <article className="post">
+    <article className="post card">
       <div className="post-image">
         <img src={post.image} alt={post.title} />
       </div>
@@ -32,23 +32,24 @@ function Post({
         <header>
           <div>
             <h2>{post.title}</h2>
-            <p>
+            <p className="muted">
               Shared by {post.userFirstName} on{" "}
               <time dateTime={post.createdAt}>
                 {formatDate(post.createdAt)}
               </time>
             </p>
           </div>
-          <div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <form
               action={action.bind(null, post.id)}
               className={post.isLiked ? "liked" : ""}
             >
               <LikeButton />
             </form>
+            <div className="like-count">{post.likes ?? 0}</div>
           </div>
         </header>
-        <p>{post.content}</p>
+        <p style={{ marginTop: 8 }}>{post.content}</p>
       </div>
     </article>
   );

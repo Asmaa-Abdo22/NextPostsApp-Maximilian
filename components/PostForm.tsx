@@ -11,42 +11,53 @@ export type FormState = {
 const PostForm = ({ action }: { action: any }) => {
   const [state, formAction, isPending] = useActionState<FormState>(action, {});
   return (
-    <>
-      <h1>Create a new post</h1>
+    <div className="card">
+      <h2 style={{ margin: 0, marginBottom: "0.5rem" }}>Create a new post</h2>
       <form action={formAction}>
-        <p className="form-control">
+        <div className="form-control">
           <label htmlFor="title">Title</label>
-          <input type="text" id="title" name="title" />
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Short, catchy title"
+          />
           {state?.errors?.title && (
-            <span className="text-red-500">
-              {state.errors.title.join(", ")}
-            </span>
+            <div className="form-errors">{state.errors.title.join(", ")}</div>
           )}
-        </p>
-        <p className="form-control">
-          <label htmlFor="image">Image </label>
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="image">Image</label>
           <input
             type="file"
             accept="image/png, image/jpeg"
             id="image"
             name="image"
           />
-        </p>
-        <p className="form-control">
-          <label htmlFor="content">Content</label>
+        </div>
 
-          <textarea id="content" name="content" rows={5} />
+        <div className="form-control">
+          <label htmlFor="content">Content</label>
+          <textarea
+            id="content"
+            name="content"
+            rows={5}
+            placeholder="What do you want to share?"
+          />
           {state?.errors?.content && (
-            <span className=" text-red-500">
-              {state.errors.content.join(", ")}
-            </span>
+            <div className="form-errors">{state.errors.content.join(", ")}</div>
           )}
-        </p>
-        <p className="form-actions">
+        </div>
+
+        <div className="form-actions">
+          <button type="reset" className="btn btn-ghost">
+            Reset
+          </button>
           <FromSubmit />
-        </p>
+        </div>
       </form>
-    </>
+    </div>
   );
 };
 
