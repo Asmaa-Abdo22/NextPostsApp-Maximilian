@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextMutation (NextPosts)
 
-## Getting Started
+NextMutation is a small demo app showcasing server actions and optimistic UI for creating and viewing posts (mutations) using the Next.js App Router. It focuses on adding posts, responsive layout, and a polished UI rather than full production features.
 
-First, run the development server:
+---
+
+## What it does
+
+- Create posts (image + title + content) using Next.js server actions.
+- Optimistic updates for likes and immediate UI feedback.
+- Browse content via Home, Feed, Explore and Profile pages.
+- Mobile-first responsive UI with card-style posts and subtle animations.
+- Local lightweight data layer (SQLite) for prototyping.
+
+---
+
+## Key UI / UX features
+
+- Modern navbar with Home / Feed / Explore / Profile / New Post.
+- Card-based posts grid with image, author, timestamp, content and like button.
+- Create-post form styled as a card with clear CTAs and validation feedback.
+- Mobile-friendly layout and simple entrance animations.
+
+---
+
+## Tech stack
+
+- Next.js (App Router)
+- React (server + client components)
+- TypeScript
+- Tailwind CSS + plain CSS for small utilities
+- SQLite (local, via `lib/posts.ts`) for demo persistence
+
+---
+## Screenshots
+
+![Home Page](https://github.com/user-attachments/assets/59defbf3-fac4-47f0-8541-ad37fac23bcf)
+
+---
+## Getting started
+
+Prerequisites: Node.js 18+, npm/yarn/pnpm
+
+1. Install
+
+```bash
+git clone <repository-url>
+cd nextjsmutation
+npm install
+```
+
+2. Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure (relevant files)
 
-## Learn More
+```
+nextjsmutation/
+├─ app/
+│  ├─ page.tsx            # Home (recent posts)
+│  ├─ feed/page.tsx       # All posts feed
+│  ├─ explore/page.tsx    # Explore UI
+│  ├─ profile/page.tsx    # Profile placeholder
+│  ├─ new-post/page.tsx   # Create post (form)
+│  └─ globals.css         # App styles
+├─ components/
+│  ├─ PostForm.tsx
+│  ├─ posts.tsx           # Post card list + optimistic updates
+│  ├─ header.tsx          # Navbar
+│  └─ like-icon.tsx
+├─ actions/
+│  └─ postsActions.ts     # Server actions for create/like
+├─ lib/
+│  └─ posts.ts            # SQLite data layer
+├─ public/
+└─ README.md
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
