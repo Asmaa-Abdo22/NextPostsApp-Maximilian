@@ -296,3 +296,8 @@ main {
 .post {
   animation: fadeUp 0.28s ease both;
 }
+.post-image {
+  position: relative;
+  width: 8rem;
+  height: 6rem;
+}

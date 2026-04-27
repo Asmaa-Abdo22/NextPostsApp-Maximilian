@@ -1,4 +1,5 @@
 import logo from "@/assets/logo.png";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
@@ -7,7 +8,7 @@ export default function Header() {
       <div className="container nav-inner">
         <div className="brand">
           <Link href="/">
-            <img src={logo.src} alt="App logo" />
+            <Image src={logo} width={100} height={100} priority  alt="App logo" />
           </Link>
           <Link href="/">
             <h1>NextPosts</h1>

@@ -3,6 +3,7 @@ import { formatDate } from "@/lib/format";
 import LikeButton from "./like-icon";
 import { togglePostLikeStatus } from "@/actions/postsActions";
 import { useOptimistic } from "react";
+import Image from "next/image";
 
 type PostItem = {
   id: number;
@@ -15,7 +16,19 @@ type PostItem = {
   likes?: number;
   isLiked?: boolean;
 };
-
+// const cloudinaryLoader = ({
+//   src,
+//   width,
+//   quality,
+// }: {
+//   src: string;
+//   width?: number;
+//   quality?: number;
+// }) => {
+//   const w = width ?? 800;
+//   const q = quality ?? 75;
+//   return `https://res.cloudinary.com/dr0mnfhg6/image/upload/w_${w},q_${q}/${src}`;
+// };
 function Post({
   post,
   action,
@@ -26,7 +39,14 @@ function Post({
   return (
     <article className="post card">
       <div className="post-image">
-        <img src={post.image} alt={post.title} />
+        <Image
+          //loader={cloudinaryLoader}
+          src={post.image}
+          alt={post.title}
+          fill
+          sizes="128px"
+          priority
+        />
       </div>
       <div className="post-content">
         <header>
